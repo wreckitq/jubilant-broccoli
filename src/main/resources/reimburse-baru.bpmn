@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_04zva4z" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
-  <bpmn:process id="process_reimburse_wisnu" name="Proses Reimburse Wisnu" isExecutable="true">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_04zva4z" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+  <bpmn:process id="process_reimburse_kelompok_2" name="Proses Reimburse Kelompok 2" isExecutable="true">
     <bpmn:startEvent id="start_permohonan" name="Memohon Reimburse">
       <bpmn:extensionElements>
         <camunda:formData>
@@ -57,7 +57,7 @@
     <bpmn:sequenceFlow id="Flow_0dztkd9" sourceRef="Activity_14wfobe" targetRef="Event_1ha5z21" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="process_reimburse_wisnu">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="process_reimburse_kelompok_2">
       <bpmndi:BPMNEdge id="Flow_0dztkd9_di" bpmnElement="Flow_0dztkd9">
         <di:waypoint x="770" y="230" />
         <di:waypoint x="832" y="230" />
