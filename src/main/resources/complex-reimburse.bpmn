@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_04zva4z" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
-  <bpmn:process id="process_reimbursement" name="Proses Reimbursement" isExecutable="true">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_04zva4z" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+  <bpmn:process id="process_reimburse_kelompok_2" name="Proses Reimburse Kelompok 2" isExecutable="true">
     <bpmn:startEvent id="start_permohonan" name="Memohon Reimburse">
       <bpmn:extensionElements>
         <camunda:formData>
@@ -37,7 +37,7 @@
       <bpmn:incoming>Flow_00tzg2x</bpmn:incoming>
       <bpmn:outgoing>Flow_0sznda4</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Activity_012n7pt" name="Update Database" camunda:class="service.tasks.updatingDatabase">
+    <bpmn:serviceTask id="Activity_012n7pt" name="Update Database" camunda:type="external" camunda:topic="update-database">
       <bpmn:incoming>Flow_0uemfkw</bpmn:incoming>
       <bpmn:outgoing>Flow_19a0nmo</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -49,13 +49,13 @@
       <bpmn:outgoing>Flow_1jzqh01</bpmn:outgoing>
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_1438uqc" sourceRef="Gateway_0tydac2" targetRef="Activity_0ugjmiq" />
-    <bpmn:serviceTask id="Activity_0ugjmiq" name="Simpan Bukti ke AWS" camunda:class="service.tasks.savingToAws">
+    <bpmn:serviceTask id="Activity_0ugjmiq" name="Simpan Bukti ke Minio" camunda:type="external" camunda:topic="simpan-bukti-ke-minio">
       <bpmn:incoming>Flow_1438uqc</bpmn:incoming>
       <bpmn:outgoing>Flow_0tzal21</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0uemfkw" sourceRef="Gateway_0tydac2" targetRef="Activity_012n7pt" />
     <bpmn:sequenceFlow id="Flow_1jzqh01" sourceRef="Gateway_0tydac2" targetRef="Activity_0txn2vi" />
-    <bpmn:sendTask id="Activity_0txn2vi" name="Notifikasi Sudah ditransfer" camunda:class="service.tasks.transferNotification">
+    <bpmn:sendTask id="Activity_0txn2vi" name="Kirim Notifikasi Sudah ditransfer" camunda:type="external" camunda:topic="kirim-notifikasi-sudah-ditransfer">
       <bpmn:incoming>Flow_1jzqh01</bpmn:incoming>
       <bpmn:outgoing>Flow_1fg9468</bpmn:outgoing>
     </bpmn:sendTask>
@@ -88,18 +88,18 @@
       <bpmn:incoming>Flow_0i76ren</bpmn:incoming>
       <bpmn:outgoing>Flow_1mvu266</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:serviceTask id="Activity_1l8pz5x" name="Update database" camunda:class="service.tasks.updatingDatabase">
+    <bpmn:serviceTask id="Activity_1l8pz5x" name="Update database" camunda:type="external" camunda:topic="update-database">
       <bpmn:incoming>Flow_0vatbxw</bpmn:incoming>
       <bpmn:outgoing>Flow_01d3b1b</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sendTask id="Activity_14wfobe" name="Kirim Notifikasi tidak disetujui" camunda:class="service.tasks.approvedNotification">
+    <bpmn:sendTask id="Activity_14wfobe" name="Kirim Notifikasi tidak disetujui" camunda:type="external" camunda:topic="kirim-notifikasi-tidak-disetujui">
       <bpmn:incoming>Flow_0s599h0</bpmn:incoming>
       <bpmn:outgoing>Flow_0i76ren</bpmn:outgoing>
     </bpmn:sendTask>
     <bpmn:sequenceFlow id="Flow_1mvu266" sourceRef="Gateway_0sge43q" targetRef="Event_19kt0ta" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="process_reimbursement">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="process_reimburse_kelompok_2">
       <bpmndi:BPMNEdge id="Flow_1mvu266_di" bpmnElement="Flow_1mvu266">
         <di:waypoint x="995" y="680" />
         <di:waypoint x="1080" y="680" />
