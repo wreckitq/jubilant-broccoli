@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_04zva4z" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_04zva4z" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.4.0">
   <bpmn:process id="process_reimburse_kelompok_2" name="Proses Reimburse Kelompok 2" isExecutable="true">
     <bpmn:startEvent id="start_permohonan" name="Memohon Reimburse">
       <bpmn:extensionElements>
@@ -55,7 +55,7 @@
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0uemfkw" sourceRef="Gateway_0tydac2" targetRef="Activity_012n7pt" />
     <bpmn:sequenceFlow id="Flow_1jzqh01" sourceRef="Gateway_0tydac2" targetRef="Activity_0txn2vi" />
-    <bpmn:sendTask id="Activity_0txn2vi" name="Kirim Notifikasi Sudah ditransfer" camunda:type="external" camunda:topic="kirim-notifikasi-sudah-ditransfer">
+    <bpmn:sendTask id="Activity_0txn2vi" name="Kirim Notifikasi Sudah ditransfer" camunda:class="send.task.notify">
       <bpmn:incoming>Flow_1jzqh01</bpmn:incoming>
       <bpmn:outgoing>Flow_1fg9468</bpmn:outgoing>
     </bpmn:sendTask>
@@ -88,11 +88,11 @@
       <bpmn:incoming>Flow_0i76ren</bpmn:incoming>
       <bpmn:outgoing>Flow_1mvu266</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:serviceTask id="Activity_1l8pz5x" name="Update database" camunda:class="service.task.notify">
+    <bpmn:serviceTask id="Activity_1l8pz5x" name="Update database" camunda:class="service.task.updateDatabase">
       <bpmn:incoming>Flow_0vatbxw</bpmn:incoming>
       <bpmn:outgoing>Flow_01d3b1b</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sendTask id="Activity_14wfobe" name="Kirim Notifikasi tidak disetujui" camunda:type="external" camunda:topic="kirim-notifikasi-tidak-disetujui">
+    <bpmn:sendTask id="Activity_14wfobe" name="Kirim Notifikasi tidak disetujui" camunda:class="send.task.notify">
       <bpmn:incoming>Flow_0s599h0</bpmn:incoming>
       <bpmn:outgoing>Flow_0i76ren</bpmn:outgoing>
     </bpmn:sendTask>
