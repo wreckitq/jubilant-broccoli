@@ -37,7 +37,7 @@
       <bpmn:incoming>Flow_00tzg2x</bpmn:incoming>
       <bpmn:outgoing>Flow_0sznda4</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Activity_012n7pt" name="Update Database" camunda:type="external" camunda:topic="update-database">
+    <bpmn:serviceTask id="Activity_012n7pt" name="Update Database" camunda:class="service.task.updateDatabase">
       <bpmn:incoming>Flow_0uemfkw</bpmn:incoming>
       <bpmn:outgoing>Flow_19a0nmo</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -49,7 +49,7 @@
       <bpmn:outgoing>Flow_1jzqh01</bpmn:outgoing>
     </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_1438uqc" sourceRef="Gateway_0tydac2" targetRef="Activity_0ugjmiq" />
-    <bpmn:serviceTask id="Activity_0ugjmiq" name="Simpan Bukti ke Minio" camunda:type="external" camunda:topic="simpan-bukti-ke-minio">
+    <bpmn:serviceTask id="Activity_0ugjmiq" name="Simpan Bukti ke Minio" camunda:class="service.task.uploadMinio">
       <bpmn:incoming>Flow_1438uqc</bpmn:incoming>
       <bpmn:outgoing>Flow_0tzal21</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -88,7 +88,7 @@
       <bpmn:incoming>Flow_0i76ren</bpmn:incoming>
       <bpmn:outgoing>Flow_1mvu266</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:serviceTask id="Activity_1l8pz5x" name="Update database" camunda:type="external" camunda:topic="update-database">
+    <bpmn:serviceTask id="Activity_1l8pz5x" name="Update database" camunda:class="service.task.notify">
       <bpmn:incoming>Flow_0vatbxw</bpmn:incoming>
       <bpmn:outgoing>Flow_01d3b1b</bpmn:outgoing>
     </bpmn:serviceTask>
